@@ -839,6 +839,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1006378592}
   - component: {fileID: 1006378591}
+  - component: {fileID: 1006378594}
+  - component: {fileID: 1006378593}
   m_Layer: 0
   m_Name: Jelly 4
   m_TagString: Untagged
@@ -916,6 +918,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1006378593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006378590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df2825ab1680ef4eac4e4e668ca9f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angularV: 0
+  torque: 0
+--- !u!50 &1006378594
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006378590}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 2
 --- !u!1 &1287825637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,10 +1294,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 363993229}
+  - {fileID: 922532446}
   - {fileID: 385860009}
   - {fileID: 269067898}
   - {fileID: 2045989406}
   - {fileID: 503923161}
   - {fileID: 614330209}
   - {fileID: 1006378592}
-  - {fileID: 922532446}
