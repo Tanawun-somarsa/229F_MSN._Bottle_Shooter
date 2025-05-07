@@ -1,32 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.SceneManagement;
 
-public class SpawnManager : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
-    public Transform[] spawnpoint;
     public GameObject EnemyPrefab;
-    /*public GameObject EnemyPrefabRed;*/
-
+    public Transform[] spawnpoint;
     public Wave[] waves;
-    public int currentWave = 0;
 
-
-    public void Start()
+    private int currentWave = 0;
+    void Start()
     {
         StartCoroutine(SpawnRoutine());
     }
 
-    void Spawn()
-    {
-        int ballon = Random.Range(0, spawnpoint.Length);
-        Instantiate(EnemyPrefab, spawnpoint[ballon].position, Quaternion.identity);
-        /*int ballonRed = Random.Range(0, spawnpoint.Length);
-        Instantiate(EnemyPrefabRed, spawnpoint[ballonRed].position, Quaternion.identity);*/
-    }
-
-    IEnumerator SpawnRoutine()
+    public IEnumerator SpawnRoutine()
     {
         while (currentWave < waves.Length)
         {
@@ -36,23 +23,17 @@ public class SpawnManager : MonoBehaviour
 
             for (int i = 0; i < wave.totalSpawnEnemies; i++)
             {
-                int EnemyIndex = Random.Range(0, wave.numberOfRandomSpawn);
-                Instantiate(EnemyPrefab, spawnpoint[EnemyIndex].position, Quaternion.identity);
+                int enemyIndex = Random.Range(0, wave.numberOfRandomSpawn);
+                Instantiate(EnemyPrefab, spawnpoint[enemyIndex].position, Quaternion.identity); // 2D ใช้ได้
+
                 yield return new WaitForSeconds(wave.spawnInterval);
-                /*int EnemyIndexRed = Random.Range(0, wave.numberOfRandomSpawn);
-                Instantiate(EnemyPrefabRed, spawnpoint[EnemyIndexRed].position, Quaternion.identity);
-                yield return new WaitForSeconds(wave.spawnInterval);*/
+
             }
-            //for (int i = 0; i < wave.totalSpawnEnemies; i++)
-            //{
-            //    int EnemyIndexRed = Random.Range(0, wave.numberOfRandomSpawn);
-            //    Instantiate(EnemyPrefabRed, spawnpoint[EnemyIndexRed].position, Quaternion.identity);
-            //    yield return new WaitForSeconds(wave.spawnInterval);
-            //}
 
             Debug.Log("Next Wave");
             currentWave++;
         }
+
         Debug.Log("Finished!!!");
     }
 }

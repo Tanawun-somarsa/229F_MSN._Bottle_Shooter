@@ -1,22 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    public float speed = 3f;
-    private Rigidbody rb;
-    private GameObject player;
+    public Transform player; // ✅ ใช้ Transform เพื่อดึงตำแหน่ง
+    public float moveSpeed = 2f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Vector3 d = player.transform.position - transform.position;
-        Vector3 dir = d.normalized;
-        rb.AddForce(dir * speed);
+        if (player != null)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
+        }
     }
 }
